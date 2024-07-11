@@ -31,8 +31,8 @@ pipeline {
             steps {
                 script {
                     // Configure git user
-                    sh 'git config user.email "your-email@example.com"'
-                    sh 'git config user.name "Your Name"'
+                    sh 'git config user.email "mohitkumardeshmukh435@gmail.com"'
+                    sh 'git config user.name "mohit"'
 
                     // Commit changes
                     sh 'git add .'
