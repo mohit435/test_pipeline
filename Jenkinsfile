@@ -40,7 +40,7 @@ pipeline {
 
                     // Push changes back to GitHub
                     withCredentials([usernamePassword(credentialsId: env.GITHUB_CREDENTIALS_ID, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mohit435/test_pipeline.git HEAD:${env.GIT_BRANCH}'
+                        sh 'git push origin ${env.GIT_BRANCH}'
                     }
                 }
             }
