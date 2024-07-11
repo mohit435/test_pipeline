@@ -39,7 +39,8 @@ pipeline {
                     sh 'git commit -m "Automated commit from Jenkins"'
 
                     // Push changes back to GitHub
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub', url: 'https://github.com/mohit435/test.git']])                        sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mohit435/test_pipeline.git HEAD:${env.GIT_BRANCH}'
+                    withCredentials([usernamePassword(credentialsId: env.GITHUB_CREDENTIALS_ID, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                        sh 'git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/mohit435/test_pipeline.git HEAD:${env.GIT_BRANCH}'
                     }
                 }
             }
