@@ -2,9 +2,8 @@ pipeline {
     agent any
 
     environment {
-        GITHUB_CREDENTIALS_ID = 'GitHub'  // Make sure this matches the credentials ID you configured
-        GIT_REPO_URL = 'https://github.com/mohit435/test_pipeline.git'
-        GIT_BRANCH = 'main'
+        GITHUB_CREDENTIALS_ID =checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GitHub', 
+                                    url: 'https://github.com/mohit435/test.git']])
     }
 
     stages {
