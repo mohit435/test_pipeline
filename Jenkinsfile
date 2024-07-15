@@ -27,23 +27,6 @@ pipeline {
                 echo 'Testing...'
             }
         }
-        stage('Push to GitHub') {
-            steps {
-                script {
-                    // Configure git user
-                    sh 'git config user.email "mohitkumardeshmukh435@gmail.com"'
-                    sh 'git config user.name "mohit"'
-
-                    // Commit changes
-                    sh 'git add .'
-                    sh 'git commit -m "Automated commit from Jenkins"'
-
-                    // Push changes back to GitHub
-                    withCredentials([usernamePassword(credentialsId: env.GITHUB_CREDENTIALS_ID, passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        sh 'git push origin ${env.GIT_BRANCH}'
-                    }
-                }
-            }
         }
     }
 }
